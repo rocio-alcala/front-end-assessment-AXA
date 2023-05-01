@@ -1,38 +1,78 @@
-.App {
+:root {
+  --primary-background-color: rgb(238, 238, 238);
+  --secondary-background-color: #e1e1e1;
+  --terciary-background-color: #4b4b4b;
+  --text-color: #000000;
+  --secondary-text-color: #ffffff;
+  --primary-link-color: #636363;
+  --secondary-link-color: #4b4b4b;
+}
+
+[data-theme="dark"] {
+  --primary-background-color: rgb(96, 96, 94);
+  --secondary-background-color: #807a7a;
+  --text-color: #fbf9fb;
+  --secondary-text-color: #fffcfc;
+  --primary-link-color: #a99da9;
+  --secondary-link-color: #706870;
+}
+
+main {
   text-align: center;
+  background-color: var(--primary-background-color);
+  font-size: 1rem;
+  color: var(--text-color);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  background-color: var(--secondary-background-color);
+  font-size: 4rem;
+  padding: 3rem;
+  font-weight: bolder;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav {
+  padding: 2rem;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.App-link {
-  color: #61dafb;
+button {height: 1.3rem; align-self: center;}
+
+.navbar { display: flex;
+  flex-wrap: wrap;
+background-color: var(--terciary-background-color);
+align-content: center;
+height: 0.5rem;}
+
+.gnomeimg {
+  width: 300px;
+  height: 200px;
+  object-fit: scale-down;
+  margin: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card {
+  background-color: var(--secondary-background-color);
+  margin: 1rem;
+  border-radius: 5%;
+  width: 400px;
+}
+
+.searchName {
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+select {
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+footer {
+  background-color: var(--secondary-background-color);
+  padding: 2rem;
+  color: var(--text-color);
 }
