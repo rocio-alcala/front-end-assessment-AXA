@@ -91,9 +91,9 @@ function App() {
       </nav>
       <section>
         {selectedGnomes.map((gnome, index) => {
-          if (index < pageState * PAGE_SIZE && index >= (pageState - 1) * PAGE_SIZE) {
+          if (index < pageState*PAGE_SIZE && index >= (pageState - 1)*PAGE_SIZE) {
             return <Card gnome={gnome} key={gnome.id}></Card>;
-          }
+          } else {return null}
         })}
       </section>
       <aside>
