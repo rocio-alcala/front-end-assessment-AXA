@@ -32,6 +32,11 @@ header {
 }
 nav {
   padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+background-color: var(--terciary-background-color);
+align-content: center;
+height: 0.5rem;
 }
 section {
   display: flex;
@@ -39,13 +44,14 @@ section {
   justify-content: space-evenly;
 }
 
+aside {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 button {height: 1.3rem; align-self: center;}
 
-.navbar { display: flex;
-  flex-wrap: wrap;
-background-color: var(--terciary-background-color);
-align-content: center;
-height: 0.5rem;}
 
 .gnomeimg {
   width: 300px;
