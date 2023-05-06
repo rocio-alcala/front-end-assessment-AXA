@@ -8,7 +8,6 @@ import Filter from "./Components/Filter";
 import SearchBar from "./Components/SearchBar";
 
 
-//hay que solucionar el tema de los errores en CONSOLAAAAAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //agregar numero de la pagina
 
 const PAGE_SIZE = 6
