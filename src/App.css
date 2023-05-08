@@ -17,6 +17,8 @@
   --secondary-link-color: #706870;
 }
 
+label {color: var(--secondary-text-color)}
+
 main {
   text-align: center;
   background-color: var(--primary-background-color);
