@@ -15,7 +15,7 @@ function SearchBar({ searchState, setSearchState }) {
         className="searchName"
         type="text"
         value={searchState}
-        onChange={(ev) => handleSearch(ev)}
+        onChange={handleSearch}
       ></input>
       <button onClick={handleCancel}>X</button>
     </>

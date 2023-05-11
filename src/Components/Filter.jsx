@@ -9,7 +9,7 @@ function Filter({ professions, selectedProfession, setSelectedProfession }) {
       <select 
         className="profession"
         value={selectedProfession}
-        onChange={(ev) => handleSelectedProfession(ev)}
+        onChange={handleSelectedProfession}
       >
         <option value="">All</option>
         {professions.map((profession) => (

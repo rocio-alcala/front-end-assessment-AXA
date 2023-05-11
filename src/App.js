@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   const professions = useMemo(
-    () => [...new Set(allGnomes.map((gnome) => gnome.professions).flat())],
+    () => [...new Set(allGnomes.flatMap((gnome) => gnome.professions))],
     [allGnomes]
   );
 
