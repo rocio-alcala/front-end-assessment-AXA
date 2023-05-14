@@ -7,14 +7,13 @@ import axios from "axios";
 import Filter from "./Components/Filter";
 import SearchBar from "./Components/SearchBar";
 
-
 //agregar numero de la pagina
 
-const PAGE_SIZE = 6
+const PAGE_SIZE = 6;
 
 function App() {
   const [allGnomes, setAllGnomes] = useState([]);
-  const [selectedProfession, setSelectedProfession] = useState();
+  const [selectedProfession, setSelectedProfession] = useState("");
   const [searchState, setSearchState] = useState("");
   const [pageState, setPageState] = useState(1);
 
@@ -32,49 +31,23 @@ function App() {
   }, []);
 
   const professions = useMemo(
-    () =>
-      Object.keys(
-        allGnomes.reduce((acc, gnome) => {
-          gnome.professions.forEach((profession) => {
-            if (!acc.hasOwnProperty(profession)) {
-              acc[profession] = true;
-            }
-          });
-          return acc;
-        }, {})
-      ),
+    () => [...new Set(allGnomes.flatMap((gnome) => gnome.professions))],
     [allGnomes]
   );
-
 
   if (!allGnomes.length) {
     return "loading";
   }
 
-
-  let selectedProfessionGnomes;
-  if (selectedProfession) {
-    selectedProfessionGnomes =
-      selectedProfession === "All"
-        ? allGnomes
-        : allGnomes.filter((gnome) =>
-            gnome.professions.includes(selectedProfession)
-          );
-  } else {
-    selectedProfessionGnomes = allGnomes;
-  }
-
-  let searchGnomes = !searchState
-    ? allGnomes
-    : allGnomes.filter((gnome) =>
-        gnome.name.toLowerCase().includes(searchState.toLowerCase())
-      );
-
-  const selectedGnomes = selectedProfessionGnomes.filter((gnome) =>
-    searchGnomes.includes(gnome)
+  const searchGnomes = allGnomes.filter((gnome) =>
+    gnome.name.toLowerCase().includes(searchState.toLowerCase())
   );
-  
-  console.log(selectedGnomes);
+  const renderGnomes = selectedProfession
+    ? searchGnomes.filter((gnome) =>
+        gnome.professions.includes(selectedProfession)
+      )
+    : searchGnomes;
+
   return (
     <main>
       <Header></Header>
@@ -90,10 +63,15 @@ function App() {
         ></Filter>
       </nav>
       <section>
-        {selectedGnomes.map((gnome, index) => {
-          if (index < pageState*PAGE_SIZE && index >= (pageState - 1)*PAGE_SIZE) {
+        {renderGnomes.map((gnome, index) => {
+          if (
+            index < pageState * PAGE_SIZE &&
+            index >= (pageState - 1) * PAGE_SIZE
+          ) {
             return <Card gnome={gnome} key={gnome.id}></Card>;
-          } else {return null}
+          } else {
+            return null;
+          }
         })}
       </section>
       <aside>
@@ -108,7 +86,9 @@ function App() {
         </button>
         <button
           disabled={
-            pageState === Math.ceil(selectedGnomes.length / PAGE_SIZE) ? true : false
+            pageState === Math.ceil(renderGnomes.length / PAGE_SIZE)
+              ? true
+              : false
           }
           onClick={() => {
             setPageState((prevState) => prevState + 1);

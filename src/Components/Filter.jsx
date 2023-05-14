@@ -5,19 +5,20 @@ function Filter({ professions, selectedProfession, setSelectedProfession }) {
   };
 
   return (
-    <select defaultValue="default option"
-      className="profession"
-      value={selectedProfession}
-      onChange={(ev) => handleSelectedProfession(ev)}
-    >
-      <option value="default option" disabled hidden>Select a profession</option>
-      <option value="All">All</option>
-      {professions.map((profession) => (
-        <option key={profession} value={profession}>
-          {profession}
-        </option>
-      ))}
-    </select>
+    <label>Search by profession
+      <select 
+        className="profession"
+        value={selectedProfession}
+        onChange={handleSelectedProfession}
+      >
+        <option value="">All</option>
+        {professions.map((profession) => (
+          <option key={profession} value={profession}>
+            {profession}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
 
